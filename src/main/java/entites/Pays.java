@@ -12,6 +12,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/** Classe Pays 
+ * 
+ * @author Quentin
+ */
+
 @Entity
 @Table(name="PAYS")
 public class Pays {
@@ -35,20 +40,39 @@ public class Pays {
 	@Column(name = "OBSOLETE", length = 1, nullable= false)
 	public String obsolete;
 	
+	/** Jointure OneToMany de Pays et Equipe
+	 *  avec une liste des pays
+	 */
 	@OneToMany(mappedBy = "pays")
 	public List<Equipe> equipes = new ArrayList<Equipe>();
 	
+	/** Jointure ManyToMany de Athlete à Pays
+	 *  avec une liste des athletes
+	 */
 	@ManyToMany(mappedBy = "pays")
 	public List<Athlete> athlete = new ArrayList<Athlete>();
 	
+	/** Jointure ManyToMany de JeuOlympique à Pays
+	 *  avec une liste des jeuxOlympiques
+	 */
 	@ManyToMany(mappedBy = "pays")
 	public List<JeuOlympique> jeuxOlympiques = new ArrayList<JeuOlympique>();
 	
-	
+	/* Constructeur de Pays
+	 * 
+	 */
 	public Pays() {
 		super();
 	}
-
+	
+	/** Constructeur de Pays
+	 * 
+	 * @param cioCode
+	 * @param nomFR
+	 * @param nomEN
+	 * @param codeIsoA3
+	 * @param obsolete
+	 */
 	public Pays(String cioCode, String nomFR, String nomEN, String codeIsoA3, String obsolete) {
 		super();
 		this.cioCode = cioCode;

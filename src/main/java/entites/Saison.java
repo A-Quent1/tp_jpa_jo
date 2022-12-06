@@ -1,5 +1,10 @@
 package entites;
 
+/** Enumeration des Saisons des jeux olympiques 
+ * 
+ * @author Quentin
+ */
+
 public enum Saison {
 	
 	SUMMER ("Summer"),

@@ -14,6 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/** Classe Epreuve 
+ * 
+ * @author Quentin
+ */
+
 @Entity
 @Table(name="EPREUVE")
 public class Epreuve {
@@ -28,16 +33,28 @@ public class Epreuve {
 	@Column(name = "EVENT_FR", length = 200, nullable= false)
 	public String eventFR;
 	
+	/** Jointure OneToMany de Epreuve et Medaille
+	 *  avec une liste des medailles
+	 */
 	@OneToMany(mappedBy = "epreuve")
 	public List<Medaille> medailles = new ArrayList<Medaille>();
 	
+	/** Jointure ManyToOne de Sport et Epreuve
+	 * 	avec ajout de l'id de sport dans la classe
+	 */
 	@ManyToOne
 	@JoinColumn(name = "ID_SPORT")
 	public Sport sport;
 	
+	/** Jointure ManyToMany de Athlete à Epreuve
+	 *  avec une liste des athletes
+	 */
 	@ManyToMany(mappedBy = "epreuves")
 	public List<Athlete> athletes = new ArrayList<Athlete>();
 	
+	/** Jointure ManyToMany de JeuOlympique à Epreuve
+	 *  avec une liste des jeux olympiques
+	 */
 	@ManyToMany(mappedBy = "epreuves")
 	public List<JeuOlympique> jeuxOlympiques = new ArrayList<JeuOlympique>();
 

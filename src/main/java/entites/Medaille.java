@@ -9,6 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/** Classe Medaille 
+ * 
+ * @author Quentin
+ */
+
 @Entity
 @Table(name="MEDAILLE")
 public class Medaille {
@@ -20,14 +25,23 @@ public class Medaille {
 	@Column(name = "MEDAL")
 	public Matiere medal;
 	
+	/** Jointure ManyToOne de Athlete et Medaille
+	 * 	avec ajout de l'id de athlete dans la classe
+	 */
 	@ManyToOne
 	@JoinColumn(name = "ID_ATHLETE")
 	public Athlete athlete;
 	
+	/** Jointure ManyToOne de Epreuve et Medaille
+	 * 	avec ajout de l'id de epreuve dans la classe
+	 */
 	@ManyToOne
 	@JoinColumn(name = "ID_EPREUVE")
 	public Epreuve epreuve;
 	
+	/** Jointure ManyToOne de JeuOlympique et Medaille
+	 * 	avec ajout de l'id de jeuOlympique dans la classe
+	 */
 	@ManyToOne
 	@JoinColumn(name = "ID_JO")
 	public JeuOlympique jeuOlympique;

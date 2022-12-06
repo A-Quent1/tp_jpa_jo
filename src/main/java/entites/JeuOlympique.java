@@ -14,6 +14,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/** Classe JeuOlympique 
+ * 
+ * @author Quentin
+ */
+
 @Entity
 @Table(name="JEUOLYMPIQUE")
 public class JeuOlympique {
@@ -31,37 +36,61 @@ public class JeuOlympique {
 	@Column(name = "CITY", length = 50, nullable= false)
 	public String city;
 	
+	/** Jointure OneToMany de JeuOlympique et Medaille
+	 *  avec une liste des medailles
+	 */
 	@OneToMany(mappedBy = "jeuOlympique")
 	public List<Medaille> medailles = new ArrayList<Medaille>();
 	
+	/** Jointure ManyToMany de JeuOlympique à Epreuve
+	 *  avec l'id de JeuOlympique et de Epreuve
+	 */
 	@ManyToMany
 	@JoinTable(name = "LIEN_JO_EPREUVE",
 	joinColumns = @JoinColumn(name = "ID_JO", referencedColumnName = "Id"),
 	inverseJoinColumns = @JoinColumn(name = "ID_EPREUVE", referencedColumnName = "Id" ))
 	public List<Epreuve> epreuves = new ArrayList<Epreuve>();
 	
+	/** Jointure ManyToMany de JeuOlympique à Equipe
+	 *  avec l'id de JeuOlympique et de Equipe
+	 */
 	@ManyToMany
 	@JoinTable(name = "LIEN_JO_EQUIPE",
 	joinColumns = @JoinColumn(name = "ID_JO", referencedColumnName = "Id"),
 	inverseJoinColumns = @JoinColumn(name = "ID_EQUIPE", referencedColumnName = "Id" ))
 	public List<Equipe> equipes = new ArrayList<Equipe>();
 	
+	/** Jointure ManyToMany de JeuOlympique à Pays
+	 *  avec l'id de JeuOlympique et de Pays
+	 */
 	@ManyToMany
 	@JoinTable(name = "LIEN_JO_PAYS",
 	joinColumns = @JoinColumn(name = "ID_JO", referencedColumnName = "Id"),
 	inverseJoinColumns = @JoinColumn(name = "ID_PAYS", referencedColumnName = "Id" ))
 	public List<Pays> pays = new ArrayList<Pays>();
 	
+	/** Jointure ManyToMany de JeuOlympique à Sport
+	 *  avec l'id de JeuOlympique et de Sport
+	 */
 	@ManyToMany
 	@JoinTable(name = "LIEN_JO_SPORT",
 	joinColumns = @JoinColumn(name = "ID_JO", referencedColumnName = "Id"),
 	inverseJoinColumns = @JoinColumn(name = "ID_SPORT", referencedColumnName = "Id" ))
 	public List<Sport> sports = new ArrayList<Sport>();
 	
+	/**Constructeur de JeuOlympique
+	 * 
+	 */
 	public JeuOlympique() {
 		super();
 	}
-
+	
+	/**Constructeur de Athlete
+	 * 
+	 * @param year
+	 * @param season
+	 * @param city
+	 */
 	public JeuOlympique(int year, Saison season, String city) {
 		super();
 		this.year = year;

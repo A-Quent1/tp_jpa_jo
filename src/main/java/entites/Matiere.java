@@ -1,5 +1,10 @@
 package entites;
 
+/** Enumeration des Matieres des medailles 
+ * 
+ * @author Quentin
+ */
+
 public enum Matiere {
 	
 	BRONZE ("Bronze"),

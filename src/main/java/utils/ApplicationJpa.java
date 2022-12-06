@@ -24,6 +24,12 @@ import entites.Saison;
 import entites.Sexe;
 import entites.Sport;
 
+/** Classe ApplicationJpa qui sert à l'insertion des données 
+ * des fichiers Csv dans la BDD 
+ * 
+ * @author Quentin
+ */
+
 public class ApplicationJpa {
 
 	public static void main(String[] args) throws IOException {
@@ -31,7 +37,13 @@ public class ApplicationJpa {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa_jo");
 		EntityManager em = entityManagerFactory.createEntityManager();
 		EntityTransaction transaction = em.getTransaction();
-
+		
+//		//----------------------------------------------------------------------------------
+//		//
+//		// Insertion des données sur les sports
+//		//
+//		//----------------------------------------------------------------------------------
+//		
 //		// Lecture fichier liste des sports
 //		Path pathSport = Paths.get("C:\\Users\\annez\\Documents\\JO_CSV\\liste_des_sports.csv");
 //		List<String> lignesSport = Files.readAllLines(pathSport, StandardCharsets.UTF_8);
@@ -58,7 +70,13 @@ public class ApplicationJpa {
 //
 //		}
 //
-//		// Lecture fichier liste des sports
+//		//----------------------------------------------------------------------------------
+//		//
+//		// Insertion des données sur les epreuves
+//		//
+//		//----------------------------------------------------------------------------------
+//		
+//		// Lecture fichier liste des epreuves
 //		Path pathEpreuve = Paths.get("C:\\Users\\annez\\Documents\\JO_CSV\\liste_des_epreuves.csv");
 //		List<String> lignesEpreuve = Files.readAllLines(pathEpreuve, StandardCharsets.UTF_8);
 //
@@ -83,7 +101,13 @@ public class ApplicationJpa {
 //			transaction.commit();
 //
 //		}
-//
+//		
+//		//----------------------------------------------------------------------------------
+//		//
+//		// Insertion des données sur les pays
+//		//
+//		//----------------------------------------------------------------------------------
+//		
 //		// Lecture fichier liste des pays
 //		Path pathPays = Paths.get("C:\\Users\\annez\\Documents\\JO_CSV\\wikipedia_iso_country_codes.csv");
 //		List<String> lignesPays = Files.readAllLines(pathPays, StandardCharsets.UTF_8);
@@ -117,7 +141,13 @@ public class ApplicationJpa {
 //			em.persist(pays);
 //			transaction.commit();
 //		}
-
+		
+		//----------------------------------------------------------------------------------
+		//
+		// Insertion des données sur les athletes
+		//
+		//----------------------------------------------------------------------------------
+		
 		// Lecture fichier liste des sports
 		Path pathAthlete = Paths.get("C:\\Users\\annez\\Documents\\JO_CSV\\athlete_epreuves.csv");
 		List<String> lignesAthlete = Files.readAllLines(pathAthlete, StandardCharsets.UTF_8);

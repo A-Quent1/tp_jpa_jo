@@ -13,6 +13,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/** Classe Equipe 
+ * 
+ * @author Quentin
+ */
+
 @Entity
 @Table(name="EQUIPE")
 public class Equipe {
@@ -27,13 +32,22 @@ public class Equipe {
 	@Column(name = "NOC", length = 3, nullable= false)
 	public String noc;
 	
+	/** Jointure ManyToOne de Pays et Equipe
+	 * 	avec ajout de l'id de pays dans la classe
+	 */
 	@ManyToOne
 	@JoinColumn(name = "ID_PAYS")
 	public Pays pays;
 	
+	/** Jointure ManyToMany de Athlete à Equipe
+	 *  avec une liste des athletes
+	 */
 	@ManyToMany(mappedBy = "equipes")
 	public List<Athlete> athletes = new ArrayList<Athlete>();
 	
+	/** Jointure ManyToMany de JeuOlympique à Equipe
+	 *  avec une liste des jeux olympiques
+	 */
 	@ManyToMany(mappedBy = "equipes")
 	public List<JeuOlympique> jeuxOlympiques = new ArrayList<JeuOlympique>();
 

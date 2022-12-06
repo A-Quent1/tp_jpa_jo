@@ -1,5 +1,10 @@
 package entites;
 
+/** Enumeration des Sexes des athletes 
+ * 
+ * @author Quentin
+ */
+
 public enum Sexe {
 	
 	F ("Female"),

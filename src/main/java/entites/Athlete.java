@@ -12,6 +12,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/** Classe Athlete 
+ * 
+ * @author Quentin
+ */
+
 @Entity
 @Table(name="ATHLETE")
 public class Athlete {
@@ -34,31 +39,55 @@ public class Athlete {
 	@Column(name = "WEIGHT", length = 3)
 	public double weight;
 	
+	/** Jointure OneToMany de Athlete et Medaille
+	 *  avec une liste des medailles
+	 */
 	@OneToMany(mappedBy = "athlete")
 	public List<Medaille> medailles = new ArrayList<Medaille>();
 	
+	/** Jointure ManyToMany de Athlete à Pays
+	 *  avec l'id de Athlete et de Pays
+	 */
 	@ManyToMany
 	@JoinTable(name = "LIEN_ATHLETE_PAYS",
 	joinColumns = @JoinColumn(name = "ID_ATHLETE", referencedColumnName = "Id"),
 	inverseJoinColumns = @JoinColumn(name = "ID_PAYS", referencedColumnName = "Id" ))
 	public List<Pays> pays = new ArrayList<Pays>();
 	
+	/** Jointure ManyToMany de Athlete à Epreuve
+	 *  avec l'id de Athlete et de Epreuve
+	 */
 	@ManyToMany
 	@JoinTable(name = "LIEN_ATHLETE_EPREUVE",
 	joinColumns = @JoinColumn(name = "ID_ATHLETE", referencedColumnName = "Id"),
 	inverseJoinColumns = @JoinColumn(name = "ID_EPREUVE", referencedColumnName = "Id" ))
 	public List<Epreuve> epreuves = new ArrayList<Epreuve>();
 	
+	/** Jointure ManyToMany de Athlete à Equipe
+	 *  avec l'id de Athlete et de Equipe
+	 */
 	@ManyToMany
 	@JoinTable(name = "LIEN_ATHLETE_EQUIPE",
 	joinColumns = @JoinColumn(name = "ID_ATHLETE", referencedColumnName = "Id"),
 	inverseJoinColumns = @JoinColumn(name = "ID_EQUIPE", referencedColumnName = "Id" ))
 	public List<Equipe> equipes = new ArrayList<Equipe>();
 	
+	/**Constructeur de Athlete
+	 * 
+	 */
 	public Athlete() {
 		super();
 	}
-
+	
+	/**Constructeur de Athlete
+	 * 
+	 * @param id
+	 * @param name
+	 * @param sex
+	 * @param age
+	 * @param height
+	 * @param weight
+	 */
 	public Athlete(int id, String name, Sexe sex, int age, int height, double weight) {
 		super();
 		this.id = id;

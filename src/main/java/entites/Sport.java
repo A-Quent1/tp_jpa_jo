@@ -12,6 +12,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/** Classe Sport 
+ * 
+ * @author Quentin
+ */
+
 @Entity
 @Table(name="SPORT")
 public class Sport {
@@ -26,17 +31,30 @@ public class Sport {
 	@Column(name = "LIBELLE_FR", length = 200, nullable= false, unique= true)
 	public String libelleFR;
 	
+	/** Jointure OneToMany de Sport et Equipe
+	 *  avec une liste des equipes
+	 */
 	@OneToMany(mappedBy = "pays")
 	public List<Equipe> equipes = new ArrayList<Equipe>();
 	
+	/** Jointure ManyToMany de JeuOlympique à Sport
+	 *  avec une liste des jeuOlympiques
+	 */
 	@ManyToMany(mappedBy = "sports")
 	public List<JeuOlympique> jeuOlympiques = new ArrayList<JeuOlympique>();
 	
-	
+	/**Constructeur de Athlete
+	 * 
+	 */
 	public Sport() {
 		super();
 	}
-
+	
+	/** Constructeur de Athlete
+	 * 
+	 * @param libelleEN
+	 * @param libelleFR
+	 */
 	public Sport(String libelleEN, String libelleFR) {
 		super();
 		this.libelleEN = libelleEN;
